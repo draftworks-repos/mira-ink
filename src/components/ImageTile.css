@@ -1,0 +1,52 @@
+.image-tile {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--char-2);
+  border-radius: var(--r-sm);
+  display: block;
+}
+
+.image-tile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focal-pos, 50% 50%);
+  display: block;
+  filter: contrast(1.03) saturate(1.04);
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.image-tile--wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s var(--ease-out);
+  will-change: clip-path;
+}
+
+.image-tile--wipe.is-in {
+  clip-path: inset(0 0 0 0);
+}
+
+.image-tile__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background-color: var(--char-2);
+  text-align: center;
+}
+
+.image-tile__fallback-text {
+  color: var(--paper-soft);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-tile--wipe {
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+  }
+}

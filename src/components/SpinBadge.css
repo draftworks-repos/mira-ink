@@ -1,0 +1,90 @@
+.spin-badge {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: var(--r-pill);
+  background-color: var(--blood);
+  color: var(--paper);
+  border: 1px solid rgba(237, 230, 218, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform var(--dur-1) var(--ease-out), background-color var(--dur-1) var(--ease-out);
+}
+
+.spin-badge:hover {
+  background-color: var(--blood-deep);
+  transform: scale(1.05);
+}
+
+.spin-badge__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: rotateBadge 14s linear infinite;
+  transform-origin: center;
+}
+
+.spin-badge--paused .spin-badge__ring {
+  animation-play-state: paused;
+}
+
+@keyframes rotateBadge {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-badge__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spin-badge__text {
+  font-family: var(--ff-body);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  fill: var(--paper);
+  text-transform: uppercase;
+}
+
+.spin-badge__center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spin-badge__arrow {
+  color: var(--paper);
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.spin-badge:hover .spin-badge__arrow {
+  transform: translateY(3px);
+}
+
+@media (max-width: 640px) {
+  .spin-badge {
+    width: 84px;
+    height: 84px;
+  }
+
+  .spin-badge__text {
+    font-size: 11.5px;
+  }
+
+  .spin-badge__arrow {
+    width: 18px;
+    height: 18px;
+  }
+}

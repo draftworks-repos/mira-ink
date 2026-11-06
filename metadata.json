@@ -1,0 +1,6 @@
+{
+  "name": "Mira Ink - Solo Tattoo Artist",
+  "description": "Dark editorial poster-style showcase and booking website for solo tattoo artist Mira, featuring fine line, black & grey, blackwork, realism, and traditional tattoos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

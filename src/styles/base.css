@@ -1,0 +1,224 @@
+@import "./tokens.css";
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--void);
+  color: var(--paper);
+}
+
+body {
+  background-color: var(--void);
+  color: var(--paper);
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.modal-open,
+body.loader-locked {
+  overflow: hidden;
+}
+
+/* Subtle Film Grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Accessibility: Skip Link */
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 10000;
+  background-color: var(--blood);
+  color: var(--paper);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--ff-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: var(--r-sm);
+  transform: translateY(-200%);
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--rose);
+  outline-offset: 2px;
+}
+
+[data-theme="paper"] :focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--blood);
+  color: var(--paper);
+}
+
+/* Typography Helpers */
+.display-type {
+  font-family: var(--ff-display);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+.serif-accent {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  line-height: 1;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: var(--rose);
+}
+
+[data-theme="paper"] .serif-accent {
+  color: var(--blood);
+}
+
+.label-type {
+  font-family: var(--ff-body);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.tabular-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Theme Sections */
+.section {
+  padding-top: var(--section-pad);
+  padding-bottom: var(--section-pad);
+  position: relative;
+}
+
+.section--below-fold {
+  /* Clean standard section */
+}
+
+.section--void {
+  background-color: var(--void);
+  color: var(--paper);
+}
+
+.section--char {
+  background-color: var(--char);
+  color: var(--paper);
+}
+
+.section--paper {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.section--blood {
+  background-color: var(--blood);
+  color: var(--paper);
+}
+
+/* Chips for overlay text (No dark image darkening) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 10px;
+  font-family: var(--ff-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--r-sm);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.chip--blood {
+  background-color: var(--blood);
+  color: var(--paper);
+}
+
+.chip--dark {
+  background-color: var(--char-2);
+  color: var(--paper);
+  border: 1px solid var(--line);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .headline-mask__inner {
+    transform: none !important;
+  }
+
+  .spin-badge__ring {
+    animation: none !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

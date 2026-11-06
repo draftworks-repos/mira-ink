@@ -1,0 +1,69 @@
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: var(--space-4) 0;
+}
+
+.marquee--blood {
+  background-color: var(--blood);
+  color: var(--paper);
+  border-top: 1px solid rgba(237, 230, 218, 0.2);
+  border-bottom: 1px solid rgba(237, 230, 218, 0.2);
+}
+
+.marquee--void {
+  background-color: var(--void);
+  color: var(--paper);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop var(--marquee-speed, 30s) linear infinite;
+}
+
+.marquee--right .marquee__track {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee__segment {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  white-space: nowrap;
+}
+
+.marquee__star {
+  color: var(--rose);
+  flex-shrink: 0;
+}
+
+.marquee--blood .marquee__star {
+  color: var(--paper);
+  opacity: 0.8;
+}

@@ -1,0 +1,236 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color var(--dur-1) var(--ease-out),
+              border-color var(--dur-1) var(--ease-out),
+              backdrop-filter var(--dur-1) var(--ease-out);
+}
+
+.navbar--scrolled {
+  background-color: rgba(11, 9, 9, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__brand {
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.navbar__nav {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.navbar__link {
+  color: var(--paper-soft);
+  text-decoration: none;
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--blood);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-1) var(--ease-out);
+}
+
+.navbar__link:hover {
+  color: var(--paper);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.navbar__book-btn-wrapper {
+  display: block;
+}
+
+/* Hide Book button on mobile, keep visible on tablet and desktop */
+@media (max-width: 640px) {
+  .navbar__book-btn-wrapper {
+    display: none !important;
+  }
+}
+
+.navbar__menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--paper);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--r-sm);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.navbar__menu-toggle:hover {
+  color: var(--rose);
+}
+
+/* Backdrop for Right Off-Canvas Drawer */
+.navbar__drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 9, 9, 0.78);
+  backdrop-filter: blur(6px);
+  z-index: 10005;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar__drawer-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Full-screen mobile navigation */
+.navbar__drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 10006;
+  background-color: var(--void);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: max(var(--space-5), env(safe-area-inset-top)) max(var(--space-6), env(safe-area-inset-right)) max(var(--space-6), env(safe-area-inset-bottom)) max(var(--space-6), env(safe-area-inset-left));
+  overflow: hidden;
+}
+
+.navbar__drawer--open {
+  transform: translateX(0);
+}
+
+.navbar__drawer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar__drawer-close {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--paper);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
+}
+
+.navbar__drawer-close:hover {
+  border-color: var(--blood);
+  color: var(--rose);
+}
+
+.navbar__drawer-nav {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+.navbar__drawer-link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: clamp(1.5rem, 10vw, 4rem);
+  color: var(--paper);
+  text-decoration: none;
+  transition: color var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.navbar__drawer-link-num {
+  font-size: 0.72rem;
+  color: var(--rose);
+  letter-spacing: 0.1em;
+}
+
+.navbar__drawer-link:hover {
+  color: var(--rose);
+  transform: translateX(8px);
+}
+
+.navbar__drawer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.navbar__drawer-city {
+  color: var(--paper-soft);
+  text-align: center;
+  font-size: 0.72rem;
+}
+
+/* Responsive Desktop */
+@media (min-width: 1025px) {
+  .navbar__nav {
+    display: flex;
+  }
+
+  .navbar__menu-toggle {
+    display: none;
+  }
+}
+
+@media (max-height: 600px) {
+  .navbar__drawer {
+    padding-top: max(var(--space-3), env(safe-area-inset-top));
+    padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
+  }
+
+  .navbar__drawer-nav {
+    gap: 2px var(--space-4);
+    margin: var(--space-2) 0;
+  }
+
+  .navbar__drawer-link {
+    font-size: clamp(1.25rem, 4vw, 1.8rem);
+    padding: 2px 0;
+  }
+}

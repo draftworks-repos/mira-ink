@@ -1,0 +1,67 @@
+.aftercare-section {
+  position: relative;
+}
+
+.aftercare-section__timeline-wrap {
+  position: relative;
+  width: 100%;
+  margin-top: var(--space-6);
+}
+
+/* Horizontal Rail on Desktop */
+.aftercare-section__rail {
+  position: absolute;
+  top: 15px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background-color: var(--line);
+  z-index: 1;
+}
+
+.aftercare-section__rail-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blood);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.aftercare-section__rail-fill.is-in {
+  transform: scaleX(1);
+}
+
+.aftercare-section__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tablet: 2 columns, HIDE connecting line rail */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .aftercare-section__steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 20px;
+  }
+
+  .aftercare-section__rail {
+    display: none !important;
+  }
+}
+
+/* Mobile: HIDE BOTH connecting line rail AND point markers */
+@media (max-width: 640px) {
+  .aftercare-section__rail {
+    display: none !important;
+  }
+
+  .aftercare-section__steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

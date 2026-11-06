@@ -1,0 +1,31 @@
+.headline-mask {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.92;
+  margin: 0;
+}
+
+.headline-mask__line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
+.headline-mask__inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 0.8s var(--ease-out);
+  transition-delay: var(--line-delay, 0ms);
+  will-change: transform;
+}
+
+.headline-mask.is-in .headline-mask__inner {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headline-mask__inner {
+    transform: none !important;
+    transition: none !important;
+  }
+}

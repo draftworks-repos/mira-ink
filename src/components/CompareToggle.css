@@ -1,0 +1,107 @@
+.compare-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.compare-toggle__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background-color: var(--char-2);
+}
+
+.compare-toggle__layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
+}
+
+.compare-toggle__layer--active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.compare-toggle__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.03) saturate(1.04);
+}
+
+.compare-toggle__chip {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  font-size: 0.68rem;
+}
+
+.compare-toggle__controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.compare-toggle__segmented {
+  position: relative;
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background-color: var(--char);
+  padding: 2px;
+}
+
+.compare-toggle__tab {
+  background: none;
+  border: none;
+  color: var(--paper-soft);
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.compare-toggle__tab--active {
+  color: var(--paper);
+}
+
+.compare-toggle__indicator {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 2px);
+  height: calc(100% - 4px);
+  background-color: var(--char-2);
+  border-bottom: 2px solid var(--blood);
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.compare-toggle__indicator--healed {
+  transform: translateX(100%);
+}
+
+.compare-toggle__caption {
+  font-size: 0.72rem;
+  color: var(--paper-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.compare-toggle__bullet {
+  color: var(--rose);
+}
+
+.compare-toggle__time {
+  color: var(--rose);
+}

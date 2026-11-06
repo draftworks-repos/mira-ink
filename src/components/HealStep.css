@@ -1,0 +1,105 @@
+.heal-step {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+}
+
+.heal-step__marker-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  position: relative;
+  z-index: 3;
+}
+
+.heal-step__marker {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--r-pill);
+  background-color: var(--void);
+  border: 1px solid var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+
+.heal-step:hover .heal-step__marker {
+  transform: scale(1.2);
+  border-color: var(--blood);
+}
+
+.heal-step__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background-color: var(--blood);
+}
+
+.heal-step__card {
+  margin-top: var(--space-4);
+  background-color: var(--char);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+
+.heal-step:hover .heal-step__card {
+  border-color: rgba(237, 230, 218, 0.4);
+}
+
+.heal-step__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heal-step__time {
+  font-size: 1.8rem;
+  color: var(--paper);
+  line-height: 1;
+}
+
+.heal-step__icon-box {
+  color: var(--rose);
+}
+
+.heal-step__subhead {
+  color: var(--rose);
+  font-size: 0.72rem;
+}
+
+.heal-step__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.heal-step__line {
+  font-size: 0.88rem;
+  color: var(--paper-soft);
+  line-height: 1.45;
+}
+
+@media (max-width: 640px) {
+  .heal-step {
+    flex-direction: column;
+  }
+
+  .heal-step__marker-wrap {
+    display: none !important;
+  }
+
+  .heal-step__card {
+    margin-top: 0;
+    width: 100%;
+  }
+}

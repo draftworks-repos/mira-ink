@@ -1,0 +1,30 @@
+.sticky-cta {
+  position: fixed;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 990;
+  display: block;
+  animation: stickySlideUp 0.3s var(--ease-out);
+}
+
+.sticky-cta__btn {
+  box-shadow: 0 8px 24px rgba(193, 18, 31, 0.45);
+}
+
+@keyframes stickySlideUp {
+  from {
+    transform: translate(-50%, 40px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1025px) {
+  .sticky-cta {
+    display: none;
+  }
+}

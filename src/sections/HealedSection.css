@@ -1,0 +1,8 @@
+.healed-section {
+  position: relative;
+}
+
+.healed-section__stage-wrap {
+  width: 100%;
+  margin-top: var(--space-6);
+}
